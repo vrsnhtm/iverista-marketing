@@ -19,10 +19,8 @@ export interface Flavor {
   tag: FlavorTag
 }
 
-export interface FlavorCard extends Flavor {
-  /** True for catalogue entries that have no photo yet. */
-  isPlaceholder?: boolean
-}
+/** A catalogue entry paired with the photo discovered for it. */
+export type FlavorCard = Flavor
 
 export const flavors: Flavor[] = [
   {
@@ -75,39 +73,71 @@ export const flavors: Flavor[] = [
     price: 0,
     tag: 'Iced',
   },
-]
-
-/**
- * Three ready-to-edit entries without photos. Replace the copy and price, or drop a
- * matching image into public/flavors/ and this entry picks it up automatically.
- */
-export const placeholderFlavors: FlavorCard[] = [
   {
-    id: 'house-blend',
-    name: 'House Blend',
-    image: '',
-    description: 'The everyday pour: chocolate, toasted nuts and a hint of brown sugar.',
-    price: 140,
-    tag: 'Hot',
-    isPlaceholder: true,
-  },
-  {
-    id: 'biscoff-latte',
-    name: 'Biscoff Latte',
-    image: '',
-    description: 'Espresso, milk and a caramelised biscuit swirl. Limited weekend batch.',
-    price: 185,
-    tag: 'Specials',
-    isPlaceholder: true,
-  },
-  {
-    id: 'pandan-cold-brew',
-    name: 'Pandan Cold Brew',
-    image: '',
-    description: 'Twelve-hour cold brew finished with pandan syrup and fresh milk.',
-    price: 170,
+    id: 'cafe-latte',
+    name: 'Cafe Latte',
+    image: '/flavors/cafe-latte.webp',
+    description: 'Espresso and plenty of steamed milk over ice — the everyday latte, smooth and mellow.',
+    price: 0,
     tag: 'Iced',
-    isPlaceholder: true,
+  },
+  {
+    id: 'spanish-latte',
+    name: 'Spanish Latte',
+    image: '/flavors/spanish-latte.webp',
+    description:
+      'Condensed milk, espresso and fresh milk poured over ice. Sweet, silky and a house favourite.',
+    price: 0,
+    tag: 'Iced',
+  },
+  {
+    id: 'caramel-macchiato',
+    name: 'Caramel Macchiato',
+    image: '/flavors/caramel-macchiato.webp',
+    description: 'Espresso, cold milk and a slow ribbon of caramel — our most-photographed cup.',
+    price: 0,
+    tag: 'Specials',
+  },
+  {
+    id: 'caramel',
+    name: 'Caramel',
+    image: '/flavors/caramel.webp',
+    description: 'Espresso, milk and buttery caramel over ice. Straightforwardly sweet, always a good idea.',
+    price: 0,
+    tag: 'Iced',
+  },
+  {
+    id: 'salted-caramel',
+    name: 'Salted Caramel',
+    image: '/flavors/salted-caramel.webp',
+    description: 'Caramel with a pinch of salt to keep it grown-up — sweet, savoury and smooth.',
+    price: 0,
+    tag: 'Specials',
+  },
+  {
+    id: 'dark-mocha',
+    name: 'Dark Mocha',
+    image: '/flavors/dark-mocha.webp',
+    description: 'Espresso and dark chocolate over ice, finished with cold milk. Rich without the weight.',
+    price: 0,
+    tag: 'Specials',
+  },
+  {
+    id: 'matcha-latte',
+    name: 'Matcha Latte',
+    image: '/flavors/matcha-latte.webp',
+    description:
+      'Ceremonial-grade matcha whisked to order over ice and fresh milk. Smooth, earthy, very creamy.',
+    price: 0,
+    tag: 'Iced',
+  },
+  {
+    id: 'signature-dark-chocolate',
+    name: 'Signature Dark Chocolate',
+    image: '/flavors/signature-dark-chocolate.webp',
+    description: 'Our signature dark chocolate, chilled and shaken over ice. Deep, velvety, bittersweet.',
+    price: 0,
+    tag: 'Specials',
   },
 ]
 
@@ -164,11 +194,6 @@ export function buildFlavorCards(images: readonly string[]): FlavorCard[] {
             tag: 'Specials',
           },
     )
-  }
-
-  // Placeholder entries only show when they have no photo of their own yet.
-  for (const placeholder of placeholderFlavors) {
-    if (!seen.has(placeholder.id)) cards.push({ ...placeholder })
   }
 
   return cards

@@ -19,7 +19,8 @@ export interface OpeningHours {
   time: string
 }
 
-export const ORDER_URL = 'https://m.me/iverista'
+/** Every "Order Now" / "Order on Messenger" button opens this Messenger conversation. */
+export const ORDER_URL = 'https://www.facebook.com/messages/t/1361975170329933'
 
 export const site = {
   name: 'iverista',
@@ -50,5 +51,5 @@ export const socials: SocialLink[] = [
   { id: 'facebook', label: 'Facebook', href: 'https://facebook.com/iverista' },
   { id: 'instagram', label: 'Instagram', href: 'https://instagram.com/iverista' },
   { id: 'tiktok', label: 'TikTok', href: 'https://tiktok.com/@iverista' },
-  { id: 'messenger', label: 'Messenger', href: 'https://m.me/iverista' },
+  { id: 'messenger', label: 'Messenger', href: ORDER_URL },
 ]

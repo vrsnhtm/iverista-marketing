@@ -19,7 +19,6 @@ export function FlavorGrid() {
   const [filter, setFilter] = useState<FilterId>('All')
 
   const visible = filter === 'All' ? cards : cards.filter((card) => card.tag === filter)
-  const hasPlaceholders = cards.some((card) => card.isPlaceholder)
 
   const handleTabKeyDown = (event: KeyboardEvent<HTMLButtonElement>, currentIndex: number) => {
     if (event.key !== 'ArrowRight' && event.key !== 'ArrowLeft') return
@@ -123,12 +122,6 @@ export function FlavorGrid() {
           {visible.length === 0 ? (
             <p className="py-14 text-center text-roast/70">
               Nothing in this category just yet — try another filter.
-            </p>
-          ) : null}
-
-          {hasPlaceholders ? (
-            <p className="mt-10 text-center text-xs leading-relaxed text-roast/55">
-              A few of our newest pours are still being photographed. Ask the bar for today’s list.
             </p>
           ) : null}
         </div>

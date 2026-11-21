@@ -59,8 +59,8 @@ vercel.json           ← SPA rewrites + Vite build settings
 
 - A photo with **no** matching entry still appears, with a title generated from the filename and no price.
 - Changing a photo’s filename changes its card, so either rename the data entry’s `id` too or keep names stable.
-- The three entries in `placeholderFlavors` have no photo yet and show a “Photo coming soon” plate.
-  Replace them, or drop in `house-blend.jpg`, `biscoff-latte.jpg`, `pandan-cold-brew.jpg` to fill them in.
+- Want a drink listed before its photo is ready? Add an entry with `image: ''` and it shows a
+  “Photo coming soon” plate until you drop a matching photo into `public/flavors/`.
 - WebP images are supported and recommended: `sea-salt-latte.webp` maps to `id: 'sea-salt-latte'`.
 - The six current posters (sweet black, long black, americano, sea salt latte, white mocha,
   french vanilla) live in `public/flavors/`; the hero and gallery photos now sit in `public/images/`.
