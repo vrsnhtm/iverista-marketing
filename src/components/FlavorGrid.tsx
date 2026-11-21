@@ -110,7 +110,7 @@ export function FlavorGrid() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-center gap-3 rounded-4xl border border-espresso/10 bg-cream/60 px-6 py-8 text-center sm:flex-row sm:gap-6">
-          <p className="font-display text-lg text-espresso">Want it ready when you arrive?</p>
+          <p className="font-display text-lg text-espresso">Want it sent straight to your door?</p>
           <a
             href={ORDER_URL}
             target="_blank"

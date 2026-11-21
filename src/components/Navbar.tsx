@@ -67,16 +67,14 @@ export function Navbar() {
         )}
       >
         <div className="container-x flex h-16 items-center justify-between gap-4 sm:h-20">
-          <a
-            href="#home"
-            aria-label="iverista — back to top"
-            className={cn(
-              'group inline-flex items-baseline gap-1 font-display text-2xl font-semibold tracking-tight transition-colors duration-500 sm:text-[1.75rem]',
-              solid ? 'text-espresso' : 'text-foam',
-            )}
-          >
-            iverista
-            <span aria-hidden="true" className="mb-1 h-1.5 w-1.5 rounded-full bg-caramel transition-transform duration-300 group-hover:scale-125" />
+          <a href="#home" aria-label="iverista — back to top" className="group inline-flex items-center">
+            <img
+              src={solid ? '/images/logo.webp' : '/images/logo-cream.webp'}
+              alt="iverista"
+              width={916}
+              height={513}
+              className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80 sm:h-11"
+            />
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
@@ -155,7 +153,7 @@ export function Navbar() {
               transition={{ type: 'tween', duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
             >
               <div className="flex items-center justify-between">
-                <span className="font-display text-2xl font-semibold tracking-tight text-espresso">iverista</span>
+                <img src="/images/logo.webp" alt="iverista" width={916} height={513} className="h-9 w-auto" />
                 <button
                   ref={closeButtonRef}
                   type="button"

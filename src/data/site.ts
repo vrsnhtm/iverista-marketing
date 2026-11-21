@@ -37,7 +37,7 @@ export const navLinks: NavLink[] = [
   { label: 'Flavors', href: '#flavors' },
   { label: 'About', href: '#about' },
   { label: 'Gallery', href: '#gallery' },
-  { label: 'Visit', href: '#visit' },
+  { label: 'Delivery', href: '#visit' },
 ]
 
 export const openingHours: OpeningHours[] = [

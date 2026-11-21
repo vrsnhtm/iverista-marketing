@@ -184,7 +184,7 @@ export function HeroSlideshow() {
                   </svg>
                 </a>
                 <a href="#visit" className="btn btn-light">
-                  Visit Us Today
+                  Get It Delivered
                 </a>
               </motion.div>
             </motion.div>

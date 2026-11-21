@@ -47,7 +47,7 @@ export const slides: Slide[] = [
     headline: 'Every cup tells a story.',
     subtext:
       'From the farms we buy from to the regulars who know our baristas by name — this is coffee with a memory attached.',
-    cta: { label: 'Visit Us Today', href: '#visit' },
+    cta: { label: 'Get It Delivered', href: '#visit' },
   },
   {
     id: 'portafilter',

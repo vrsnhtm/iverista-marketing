@@ -12,9 +12,8 @@ export function Footer() {
       <div className="container-x relative py-16 sm:py-20">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr_1.1fr]">
           <div>
-            <a href="#home" className="inline-flex items-baseline gap-1 font-display text-3xl font-semibold tracking-tight text-cream">
-              iverista
-              <span aria-hidden="true" className="mb-1.5 h-1.5 w-1.5 rounded-full bg-caramel" />
+            <a href="#home" aria-label="iverista — back to top" className="inline-flex">
+              <img src="/images/logo-cream.webp" alt="iverista" width={916} height={513} className="h-14 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-cream/65">{site.tagline}</p>
             <SocialLinks tone="light" className="mt-6" />
