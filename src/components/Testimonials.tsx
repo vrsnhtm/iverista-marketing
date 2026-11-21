@@ -1,0 +1,139 @@
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { cn } from '../lib/utils'
+
+interface Testimonial {
+  quote: string
+  name: string
+  role: string
+}
+
+const testimonials: Testimonial[] = [
+  {
+    quote:
+      'The caramel macchiato ruined every other coffee for me. The team remembers my order, asks how my week is going, and never rushes me out the door.',
+    name: 'Mika R.',
+    role: 'Regular since 2021',
+  },
+  {
+    quote:
+      'I write here three mornings a week. Good light, better playlists, and the Spanish latte is genuinely the best in the city. It feels like a living room with excellent taste.',
+    name: 'Daniel S.',
+    role: 'Works from the corner table',
+  },
+  {
+    quote:
+      'We came for one cup and stayed for two hours talking to the barista about beans. iverista is the weekend ritual we didn’t know we needed.',
+    name: 'Bea & Nico',
+    role: 'Weekend regulars',
+  },
+]
+
+function Stars() {
+  return (
+    <div className="flex gap-1" aria-label="5 out of 5 stars">
+      {Array.from({ length: 5 }).map((_, index) => (
+        <svg key={index} viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4 fill-caramel">
+          <path d="M10 1.8l2.5 5 5.5.8-4 3.9.95 5.5L10 14.4 5.05 17l.95-5.5-4-3.9 5.5-.8z" />
+        </svg>
+      ))}
+    </div>
+  )
+}
+
+/** Three customer quotes in a keyboard-accessible carousel. */
+export function Testimonials() {
+  const [index, setIndex] = useState(0)
+  const active = testimonials[index]
+
+  const go = (next: number) => setIndex((next + testimonials.length) % testimonials.length)
+
+  return (
+    <section
+      id="testimonials"
+      aria-labelledby="testimonials-heading"
+      className="relative overflow-hidden bg-espresso py-24 text-cream sm:py-28 lg:py-32"
+    >
+      <div aria-hidden="true" className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.12]" />
+      <div aria-hidden="true" className="absolute -right-16 top-10 select-none font-display text-[16rem] leading-none text-cream/[0.04]">
+        ”
+      </div>
+
+      <div className="container-x relative">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="eyebrow">Kind words</p>
+            <h2 id="testimonials-heading" className="mt-4 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.08]">
+              From our regulars.
+            </h2>
+          </div>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => go(index - 1)}
+              aria-label="Previous testimonial"
+              className="grid h-11 w-11 place-items-center rounded-full border border-cream/25 text-cream transition hover:border-cream/70 hover:bg-cream/10"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <path d="M12 4l-6 6 6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => go(index + 1)}
+              aria-label="Next testimonial"
+              className="grid h-11 w-11 place-items-center rounded-full border border-cream/25 text-cream transition hover:border-cream/70 hover:bg-cream/10"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.6">
+                <path d="M8 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-12 min-h-[19rem] sm:min-h-[16rem]" aria-live="polite">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.blockquote
+              key={active.name}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4 }}
+              className="max-w-3xl"
+            >
+              <Stars />
+              <p className="mt-6 font-display text-[clamp(1.45rem,3.2vw,2.15rem)] font-normal leading-snug text-cream/95">
+                “{active.quote}”
+              </p>
+              <footer className="mt-7 flex items-center gap-3">
+                <span className="grid h-10 w-10 place-items-center rounded-full bg-caramel/20 font-display text-sm text-caramel">
+                  {active.name.charAt(0)}
+                </span>
+                <span>
+                  <cite className="block not-italic font-semibold text-cream">{active.name}</cite>
+                  <span className="block text-xs uppercase tracking-widest text-cream/50">{active.role}</span>
+                </span>
+              </footer>
+            </motion.blockquote>
+          </AnimatePresence>
+        </div>
+
+        <div className="mt-8 flex gap-2" role="group" aria-label="Choose a testimonial">
+          {testimonials.map((testimonial, dotIndex) => (
+            <button
+              key={testimonial.name}
+              type="button"
+              onClick={() => setIndex(dotIndex)}
+              aria-label={`Testimonial ${dotIndex + 1}: ${testimonial.name}`}
+              aria-current={dotIndex === index ? 'true' : undefined}
+              className={cn(
+                'h-2 rounded-full transition-all duration-500',
+                dotIndex === index ? 'w-10 bg-caramel' : 'w-2 bg-cream/30 hover:bg-cream/60',
+              )}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

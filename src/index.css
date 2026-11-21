@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    /* Fine film grain, used over hero imagery and as a soft paper texture. */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    --grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-foam font-sans text-espresso antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Keep anchored sections clear of the fixed navbar. */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background-color: rgba(198, 139, 89, 0.4);
+    color: #2b1b14;
+  }
+
+  :focus-visible {
+    outline: 2px solid #c68b59;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Honour the OS "reduce motion" setting for every CSS animation and transition. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-widest text-caramel;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-6 bg-caramel/70;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition duration-300 ease-out-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-caramel focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-espresso text-cream shadow-lift hover:-translate-y-0.5 hover:bg-roast hover:shadow-xl focus-visible:ring-offset-cream;
+  }
+
+  .btn-caramel {
+    @apply bg-caramel text-espresso shadow-lift hover:-translate-y-0.5 hover:bg-[#d29a68] hover:shadow-xl focus-visible:ring-offset-espresso;
+  }
+
+  .btn-outline {
+    @apply border border-espresso/25 bg-transparent text-espresso hover:border-espresso/50 hover:bg-espresso/5;
+  }
+
+  .btn-light {
+    @apply border border-cream/45 bg-white/5 text-foam backdrop-blur-sm hover:border-cream/80 hover:bg-white/10 focus-visible:ring-offset-espresso;
+  }
+
+  .section-heading {
+    @apply font-display text-[clamp(2rem,4.5vw,3.25rem)] font-medium leading-[1.08] tracking-tight text-espresso;
+  }
+
+  .paper-texture {
+    background-image: var(--grain-soft);
+    background-blend-mode: multiply;
+  }
+
+  .grain-overlay {
+    background-image: var(--grain);
+    background-size: 160px 160px;
+    mix-blend-mode: overlay;
+  }
+
+  .film-vignette {
+    background: radial-gradient(
+      120% 90% at 50% 45%,
+      transparent 35%,
+      rgba(20, 12, 9, 0.35) 75%,
+      rgba(20, 12, 9, 0.72) 100%
+    );
+  }
+
+  .aspect-portrait {
+    aspect-ratio: 4 / 5;
+  }
+
+  .aspect-tall {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  .aspect-landscape {
+    aspect-ratio: 4 / 3;
+  }
+
+  .aspect-wide {
+    aspect-ratio: 16 / 10;
+  }
+
+  /* Warm placeholder shimmer shown while a photo loads. */
+  .photo-shimmer {
+    background-image: linear-gradient(110deg, #efe0cb 8%, #faf1e4 20%, #efe0cb 34%);
+    background-size: 220% 100%;
+    animation: shimmer 1.8s linear infinite;
+  }
+
+  .ken-burns-a {
+    animation: ken-burns-a 9s ease-out forwards;
+  }
+
+  .ken-burns-b {
+    animation: ken-burns-b 9s ease-out forwards;
+  }
+}
+
+@layer utilities {
+  .text-shadow-hero {
+    text-shadow: 0 2px 30px rgba(20, 12, 9, 0.45);
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
