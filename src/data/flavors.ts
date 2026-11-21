@@ -10,6 +10,9 @@
 
 export type FlavorTag = 'Hot' | 'Iced' | 'Specials'
 
+/** Menu grouping used by the filter bar in the menu section. */
+export type FlavorCategory = 'Signature Coffee' | 'Non Coffee'
+
 export interface Flavor {
   id: string
   name: string
@@ -17,6 +20,8 @@ export interface Flavor {
   description: string
   price: number
   tag: FlavorTag
+  /** Leave undefined to show the drink under “All” only. */
+  category?: FlavorCategory
 }
 
 /** A catalogue entry paired with the photo discovered for it. */
@@ -56,6 +61,7 @@ export const flavors: Flavor[] = [
       'Espresso, fresh milk and a whisper of sea salt foam — sweet, savoury and impossibly smooth.',
     price: 0,
     tag: 'Specials',
+    category: 'Signature Coffee',
   },
   {
     id: 'white-mocha',
@@ -64,6 +70,7 @@ export const flavors: Flavor[] = [
     description: 'White chocolate melted into espresso and steamed milk. Soft, creamy, a little indulgent.',
     price: 0,
     tag: 'Specials',
+    category: 'Signature Coffee',
   },
   {
     id: 'french-vanilla',
@@ -72,6 +79,7 @@ export const flavors: Flavor[] = [
     description: 'Espresso, milk and mellow French vanilla — the comfort order, double the flavour.',
     price: 0,
     tag: 'Iced',
+    category: 'Signature Coffee',
   },
   {
     id: 'cafe-latte',
@@ -97,6 +105,7 @@ export const flavors: Flavor[] = [
     description: 'Espresso, cold milk and a slow ribbon of caramel — our most-photographed cup.',
     price: 0,
     tag: 'Specials',
+    category: 'Signature Coffee',
   },
   {
     id: 'caramel',
@@ -105,6 +114,7 @@ export const flavors: Flavor[] = [
     description: 'Espresso, milk and buttery caramel over ice. Straightforwardly sweet, always a good idea.',
     price: 0,
     tag: 'Iced',
+    category: 'Signature Coffee',
   },
   {
     id: 'salted-caramel',
@@ -113,6 +123,7 @@ export const flavors: Flavor[] = [
     description: 'Caramel with a pinch of salt to keep it grown-up — sweet, savoury and smooth.',
     price: 0,
     tag: 'Specials',
+    category: 'Signature Coffee',
   },
   {
     id: 'dark-mocha',
@@ -121,6 +132,7 @@ export const flavors: Flavor[] = [
     description: 'Espresso and dark chocolate over ice, finished with cold milk. Rich without the weight.',
     price: 0,
     tag: 'Specials',
+    category: 'Signature Coffee',
   },
   {
     id: 'matcha-latte',
@@ -130,6 +142,7 @@ export const flavors: Flavor[] = [
       'Ceremonial-grade matcha whisked to order over ice and fresh milk. Smooth, earthy, very creamy.',
     price: 0,
     tag: 'Iced',
+    category: 'Non Coffee',
   },
   {
     id: 'signature-dark-chocolate',
@@ -138,6 +151,7 @@ export const flavors: Flavor[] = [
     description: 'Our signature dark chocolate, chilled and shaken over ice. Deep, velvety, bittersweet.',
     price: 0,
     tag: 'Specials',
+    category: 'Non Coffee',
   },
 ]
 

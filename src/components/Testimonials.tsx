@@ -11,21 +11,9 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     quote:
-      'The caramel macchiato ruined every other coffee for me. The team remembers my order, asks how my week is going, and never rushes me out the door.',
-    name: 'Mika R.',
-    role: 'Regular since 2021',
-  },
-  {
-    quote:
-      'I write here three mornings a week. Good light, better playlists, and the Spanish latte is genuinely the best in the city. It feels like a living room with excellent taste.',
-    name: 'Daniel S.',
-    role: 'Works from the corner table',
-  },
-  {
-    quote:
-      'We came for one cup and stayed for two hours talking to the barista about beans. iverista is the weekend ritual we didn’t know we needed.',
-    name: 'Bea & Nico',
-    role: 'Weekend regulars',
+      'Honest review: yung matcha latte lasang ceremonial grade na matcha ginamit, sakto lang yung tamis, creaminess at matcha lang matitikman mo. 9.5/10. Yung spanish latte naman nag susuntukan sa pag balance yung espresso at cream, the best! 9.5/10.',
+    name: 'JB P.',
+    role: 'Customer review',
   },
 ]
 
@@ -41,7 +29,7 @@ function Stars() {
   )
 }
 
-/** Three customer quotes in a keyboard-accessible carousel. */
+/** Customer quotes in a keyboard-accessible carousel (controls hide themselves when only one is listed). */
 export function Testimonials() {
   const [index, setIndex] = useState(0)
   const active = testimonials[index]
@@ -67,7 +55,7 @@ export function Testimonials() {
               From our regulars.
             </h2>
           </div>
-          <div className="flex gap-2">
+          <div className={cn('flex gap-2', testimonials.length < 2 && 'hidden')}>
             <button
               type="button"
               onClick={() => go(index - 1)}
@@ -118,7 +106,11 @@ export function Testimonials() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-8 flex gap-2" role="group" aria-label="Choose a testimonial">
+        <div
+          className={cn('mt-8 gap-2', testimonials.length > 1 ? 'flex' : 'hidden')}
+          role="group"
+          aria-label="Choose a testimonial"
+        >
           {testimonials.map((testimonial, dotIndex) => (
             <button
               key={testimonial.name}

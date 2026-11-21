@@ -3,36 +3,36 @@ import { PhotoFrame } from './PhotoFrame'
 
 const photos = [
   {
-    src: '/images/shop-counter.jpg',
-    alt: 'The iverista coffee counter with an espresso machine, ceramic cups and warm pendant lights',
-    title: 'The counter',
-    description: 'Where everything happens — usually with a record playing.',
-    aspect: 'landscape' as const,
-  },
-  {
-    src: '/images/pour.jpg',
-    alt: 'A barista pouring steamed milk into a cup to make latte art',
-    title: 'Slow pours',
-    description: 'Milk steamed to silk, one cup at a time.',
+    src: '/images/gallery-rosetta-1.webp',
+    alt: 'A latte art rosetta poured into a white cup, photographed from above',
+    title: 'Rosetta',
+    description: 'The classic leaf — a slow, steady pour from start to finish.',
     aspect: 'portrait' as const,
   },
   {
-    src: '/images/guests.jpg',
-    alt: 'Two friends laughing over coffee at a wooden table in the iverista shop',
-    title: 'Our regulars',
-    description: 'The best part of the shop is who fills it.',
-    aspect: 'landscape' as const,
+    src: '/images/gallery-shiba-inu.webp',
+    alt: 'A shiba inu dog drawn in the milk foam of a latte, held above the coffee bar',
+    title: 'Shiba inu',
+    description: 'Ordered by a regular, drawn freehand. Not on the menu — yet.',
+    aspect: 'portrait' as const,
   },
   {
-    src: '/images/gallery-matcha.jpg',
-    alt: 'An iced matcha latte on a linen surface with a bamboo whisk nearby',
-    title: 'Something green',
-    description: 'For the days that call for matcha instead.',
+    src: '/images/gallery-tulip.webp',
+    alt: 'A tulip latte art pattern topped with a heart, poured in a pale pink cup',
+    title: 'Tulip',
+    description: 'Stacked hearts, one pour, no touching up afterwards.',
+    aspect: 'portrait' as const,
+  },
+  {
+    src: '/images/gallery-rosetta-2.webp',
+    alt: 'A rosetta latte art pattern with concentric rings and a heart at the top',
+    title: 'Rosetta, freehand',
+    description: 'Our barista’s steadiest hand, on a good morning.',
     aspect: 'portrait' as const,
   },
 ]
 
-/** Framed photos of the shop, the coffee and the people in it. */
+/** Framed photos of the coffee and the latte art coming off the bar. */
 export function Gallery() {
   return (
     <section id="gallery" aria-labelledby="gallery-heading" className="bg-foam py-24 sm:py-28 lg:py-32">
@@ -40,11 +40,11 @@ export function Gallery() {
         <div className="max-w-2xl">
           <p className="eyebrow">Life at iverista</p>
           <h2 id="gallery-heading" className="section-heading mt-5">
-            Pull up a chair.
+            Poured by hand.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-roast/75 sm:text-lg">
-            Warm light, worn wood, and the quiet hum of the grinder. This is what an ordinary afternoon
-            here looks like.
+            Milk steamed to silk and poured in one go — rosettas, tulips, and the occasional request we
+            could not say no to. This is what leaves the bar on a good morning.
           </p>
         </div>
 

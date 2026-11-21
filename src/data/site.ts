@@ -24,11 +24,11 @@ export const ORDER_URL = 'https://www.facebook.com/messages/t/1361975170329933'
 
 export const site = {
   name: 'iverista',
-  tagline: 'Specialty coffee, slow mornings, and a seat that feels like yours.',
-  address: '123 Mabini Street, Poblacion, Makati City, Metro Manila',
-  phone: '+63 917 000 0000',
-  email: 'hello@iverista.ph',
-  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Mabini+Street+Poblacion+Makati+City',
+  tagline: 'Specialty coffee, brewed to order, delivered to your door.',
+  address: 'Adelfa St., Tanza 1, Navotas City',
+  phone: '+63 928 350 6526',
+  email: 'i3cabangis@gmail.com',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Adelfa+Street+Tanza+1+Navotas+City',
   orderUrl: ORDER_URL,
 } as const
 
@@ -41,15 +41,15 @@ export const navLinks: NavLink[] = [
 ]
 
 export const openingHours: OpeningHours[] = [
-  { days: 'Monday – Thursday', time: '7:00 AM – 9:00 PM' },
-  { days: 'Friday – Saturday', time: '7:00 AM – 11:00 PM' },
-  { days: 'Sunday', time: '8:00 AM – 7:00 PM' },
+  { days: 'Monday – Thursday', time: '9:00 AM – 9:00 PM' },
+  { days: 'Friday – Saturday', time: '9:00 AM – 10:00 PM' },
+  { days: 'Sunday', time: '9:00 AM – 10:00 PM' },
 ]
 
-/** Replace these hrefs with your real profiles. */
 export const socials: SocialLink[] = [
-  { id: 'facebook', label: 'Facebook', href: 'https://facebook.com/iverista' },
+  { id: 'facebook', label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61595389176457' },
+  // Instagram and TikTok still use placeholder profiles — swap the hrefs once they exist.
   { id: 'instagram', label: 'Instagram', href: 'https://instagram.com/iverista' },
   { id: 'tiktok', label: 'TikTok', href: 'https://tiktok.com/@iverista' },
-  { id: 'messenger', label: 'Messenger', href: ORDER_URL },
+  { id: 'messenger', label: 'Messenger', href: 'https://www.facebook.com/messages/t/1361975170329933' },
 ]

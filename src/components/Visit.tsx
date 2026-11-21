@@ -10,13 +10,13 @@ export function Visit() {
     <section id="visit" aria-labelledby="visit-heading" className="paper-texture bg-cream py-24 sm:py-28 lg:py-32">
       <div className="container-x grid gap-14 lg:grid-cols-2 lg:gap-16">
         <div>
-          <p className="eyebrow">Find us</p>
+          <p className="eyebrow">Delivery only</p>
           <h2 id="visit-heading" className="section-heading mt-5">
-            Come sit with us.
+            Order with us.
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-roast/75 sm:text-lg">
-            We’re a short walk from the corner of Mabini and Del Pilar — look for the warm window and
-            the smell of fresh espresso. Solo, on a date, or with your laptop: there’s a seat for you.
+            iverista is delivery only — no shop floor, no seats to reserve. Message us with your order and
+            your address, and we’ll brew it fresh and hand it straight to a rider headed your way.
           </p>
 
           <div className="mt-9 space-y-6">
@@ -36,7 +36,7 @@ export function Visit() {
                   rel="noreferrer"
                   className="mt-1.5 inline-block text-sm font-semibold text-roast underline decoration-caramel decoration-2 underline-offset-4 hover:text-espresso"
                 >
-                  Get directions
+                  View on the map
                 </a>
               </div>
             </div>
@@ -116,7 +116,7 @@ export function Visit() {
             </span>
             <p className="mt-4 font-display text-2xl text-espresso">iverista</p>
             <p className="mt-1 max-w-[20ch] text-sm leading-relaxed text-roast/75">
-              123 Mabini Street, Poblacion, Makati City
+              {site.address}
             </p>
             <a
               href={site.mapUrl}
