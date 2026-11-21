@@ -5,6 +5,7 @@ import { FlavorGrid } from './components/FlavorGrid'
 import { About } from './components/About'
 import { Gallery } from './components/Gallery'
 import { Testimonials } from './components/Testimonials'
+import { Feedback } from './components/Feedback'
 import { Visit } from './components/Visit'
 import { Footer } from './components/Footer'
 import { FloatingOrderButton } from './components/FloatingOrderButton'
@@ -28,6 +29,7 @@ export default function App() {
           <About />
           <Gallery />
           <Testimonials />
+          <Feedback />
           <Visit />
         </main>
 
