@@ -8,7 +8,7 @@ import { PhotoFrame } from './PhotoFrame'
 
 type FilterId = 'All' | FlavorCategory
 
-const FILTERS: FilterId[] = ['All', 'Signature Coffee', 'Non Coffee']
+const FILTERS: FilterId[] = ['All', 'Signature Coffee', 'Non Coffee', 'Soda Series', 'Water Based']
 
 /**
  * Flavor menu. Every photo in `public/flavors/` becomes a framed card; prices and
@@ -90,7 +90,7 @@ export function FlavorGrid() {
                   src={card.image || undefined}
                   alt={
                     card.image
-                      ? `${card.name}, an iverista coffee`
+                      ? `${card.name}, an iverista drink`
                       : `${card.name} — photo coming soon`
                   }
                   title={card.name}

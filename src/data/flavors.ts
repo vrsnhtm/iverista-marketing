@@ -11,7 +11,7 @@
 export type FlavorTag = 'Hot' | 'Iced' | 'Specials'
 
 /** Menu grouping used by the filter bar in the menu section. */
-export type FlavorCategory = 'Signature Coffee' | 'Non Coffee'
+export type FlavorCategory = 'Signature Coffee' | 'Non Coffee' | 'Soda Series' | 'Water Based'
 
 export interface Flavor {
   id: string
@@ -143,6 +143,86 @@ export const flavors: Flavor[] = [
     price: 0,
     tag: 'Iced',
     category: 'Non Coffee',
+  },
+  {
+    id: 'blueberry',
+    name: 'Blueberry',
+    image: '/flavors/blueberry.webp',
+    description:
+      'Ripe blueberries shaken over crushed ice with fruit jelly at the bottom. Light, fruity and properly refreshing.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Water Based',
+  },
+  {
+    id: 'blueberry-soda',
+    name: 'Blueberry Soda',
+    image: '/flavors/blueberry-soda.webp',
+    description:
+      'Blueberries over crushed ice, topped with soda for fizz and a spoonful of fruit jelly to finish.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Soda Series',
+  },
+  {
+    id: 'green-apple',
+    name: 'Green Apple',
+    image: '/flavors/green-apple.webp',
+    description:
+      'Crisp green apple over crushed ice with fruit jelly at the bottom — tart, clean and all-day easy.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Water Based',
+  },
+  {
+    id: 'green-apple-soda',
+    name: 'Green Apple Soda',
+    image: '/flavors/green-apple-soda.webp',
+    description:
+      'Our green apple over crushed ice, finished with soda so every sip is sharp, fruity and fizzy.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Soda Series',
+  },
+  {
+    id: 'lychee',
+    name: 'Lychee',
+    image: '/flavors/lychee.webp',
+    description:
+      'Fragrant lychee poured over crushed ice with fruit jelly — soft, floral and gently sweet.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Water Based',
+  },
+  {
+    id: 'lychee-soda',
+    name: 'Lychee Soda',
+    image: '/flavors/lychee-soda.webp',
+    description:
+      'Lychee over crushed ice with fruit jelly, topped with soda for a light, floral fizz.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Soda Series',
+  },
+  {
+    id: 'strawberry',
+    name: 'Strawberry',
+    image: '/flavors/strawberry.webp',
+    description:
+      'Sweet strawberries shaken over crushed ice with fruit jelly at the bottom. Bright, juicy, thirst-quenching.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Water Based',
+  },
+  {
+    id: 'strawberry-soda',
+    name: 'Strawberry Soda',
+    image: '/flavors/strawberry-soda.webp',
+    description:
+      'Strawberries over crushed ice and fruit jelly, topped with soda — juicy up front, fizzy to finish.',
+    price: 0,
+    tag: 'Iced',
+    category: 'Soda Series',
   },
   {
     id: 'signature-dark-chocolate',
