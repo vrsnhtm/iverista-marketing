@@ -42,8 +42,7 @@ export const navLinks: NavLink[] = [
 
 export const openingHours: OpeningHours[] = [
   { days: 'Monday – Thursday', time: '9:00 AM – 9:00 PM' },
-  { days: 'Friday – Saturday', time: '9:00 AM – 10:00 PM' },
-  { days: 'Sunday', time: '9:00 AM – 10:00 PM' },
+  { days: 'Friday – Sunday', time: '9:00 AM – 10:00 PM' },
 ]
 
 export const socials: SocialLink[] = [
