@@ -20,7 +20,7 @@ export interface OpeningHours {
 }
 
 /** Every "Order Now" / "Order on Messenger" button opens this Messenger conversation. */
-export const ORDER_URL = 'https://www.facebook.com/messages/t/1361975170329933'
+export const ORDER_URL = 'https://www.facebook.com/profile.php?id=61595389176457'
 
 export const site = {
   name: 'iverista',
@@ -51,5 +51,5 @@ export const socials: SocialLink[] = [
   // Instagram and TikTok still use placeholder profiles — swap the hrefs once they exist.
   { id: 'instagram', label: 'Instagram', href: 'https://instagram.com/iverista' },
   { id: 'tiktok', label: 'TikTok', href: 'https://tiktok.com/@iverista' },
-  { id: 'messenger', label: 'Messenger', href: 'https://www.facebook.com/messages/t/1361975170329933' },
+  { id: 'messenger', label: 'Messenger', href: 'https://www.facebook.com/profile.php?id=61595389176457' },
 ]
