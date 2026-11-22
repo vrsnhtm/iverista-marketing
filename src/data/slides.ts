@@ -23,7 +23,7 @@ export const slides: Slide[] = [
     id: 'counter',
     image: '/images/hero-counter.webp',
     alt: 'The iverista coffee bar — grinder, espresso machine and bottles of house syrup lined up on the counter',
-    eyebrow: 'Specialty coffee · Makati',
+    eyebrow: 'Specialty coffee · Navotas',
     headline: 'Your daily ritual, brewed with love.',
     subtext:
       'Single-origin beans, slow pours and a bar we are always happy to show you. Come for the coffee — stay for the quiet.',

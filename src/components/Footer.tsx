@@ -65,7 +65,7 @@ export function Footer() {
         <div className="mt-14 flex flex-col gap-4 border-t border-cream/10 pt-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
           <p>© iverista</p>
           <p className="flex items-center gap-2">
-            Brewed with care in Makati
+            Brewed with care in Navotas
             <span aria-hidden="true" className="text-caramel">
               ·
             </span>
