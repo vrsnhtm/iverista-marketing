@@ -6,6 +6,9 @@ interface Testimonial {
   quote: string
   name: string
   role: string
+  /** Optional photo of the drink arriving, shown beside the quote. */
+  photo?: string
+  photoAlt?: string
 }
 
 const testimonials: Testimonial[] = [
@@ -14,6 +17,8 @@ const testimonials: Testimonial[] = [
       'Honest review: yung matcha latte lasang ceremonial grade na matcha ginamit, sakto lang yung tamis, creaminess at matcha lang matitikman mo. 9.5/10. Yung spanish latte naman nag susuntukan sa pag balance yung espresso at cream, the best! 9.5/10.',
     name: 'JB P.',
     role: 'Customer review',
+    photo: '/images/review-jb-p.webp',
+    photoAlt: 'JB P. smiling while holding up two iverista iced drinks in a takeaway bag',
   },
 ]
 
@@ -87,21 +92,38 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.4 }}
-              className="max-w-3xl"
+              className="grid max-w-4xl gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start lg:gap-12"
             >
-              <Stars />
-              <p className="mt-6 font-display text-[clamp(1.45rem,3.2vw,2.15rem)] font-normal leading-snug text-cream/95">
-                “{active.quote}”
-              </p>
-              <footer className="mt-7 flex items-center gap-3">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-caramel/20 font-display text-sm text-caramel">
-                  {active.name.charAt(0)}
-                </span>
-                <span>
-                  <cite className="block not-italic font-semibold text-cream">{active.name}</cite>
-                  <span className="block text-xs uppercase tracking-widest text-cream/50">{active.role}</span>
-                </span>
-              </footer>
+              <div>
+                <Stars />
+                <p className="mt-6 font-display text-[clamp(1.45rem,3.2vw,2.15rem)] font-normal leading-snug text-cream/95">
+                  “{active.quote}”
+                </p>
+                <footer className="mt-7 flex items-center gap-3">
+                  <span className="grid h-10 w-10 place-items-center rounded-full bg-caramel/20 font-display text-sm text-caramel">
+                    {active.name.charAt(0)}
+                  </span>
+                  <span>
+                    <cite className="block not-italic font-semibold text-cream">{active.name}</cite>
+                    <span className="block text-xs uppercase tracking-widest text-cream/50">{active.role}</span>
+                  </span>
+                </footer>
+              </div>
+
+              {active.photo ? (
+                <figure className="order-first w-36 sm:w-44 lg:order-none lg:mt-1 lg:w-full">
+                  <img
+                    src={active.photo}
+                    alt={active.photoAlt ?? ''}
+                    loading="lazy"
+                    decoding="async"
+                    className="aspect-[9/16] w-full rounded-[1.2rem] object-cover ring-1 ring-cream/15"
+                  />
+                  <figcaption className="mt-3 text-[0.68rem] uppercase tracking-[0.18em] text-cream/45">
+                    Delivered to {active.name}
+                  </figcaption>
+                </figure>
+              ) : null}
             </motion.blockquote>
           </AnimatePresence>
         </div>
