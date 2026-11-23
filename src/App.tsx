@@ -2,6 +2,7 @@ import { MotionConfig } from 'framer-motion'
 import { Navbar } from './components/Navbar'
 import { HeroSlideshow } from './components/HeroSlideshow'
 import { FlavorGrid } from './components/FlavorGrid'
+import { MenuSlideshow } from './components/MenuSlideshow'
 import { Promo } from './components/Promo'
 import { About } from './components/About'
 import { Gallery } from './components/Gallery'
@@ -27,6 +28,7 @@ export default function App() {
         <main id="main" tabIndex={-1} className="outline-none">
           <HeroSlideshow />
           <FlavorGrid />
+          <MenuSlideshow />
           <Promo />
           <About />
           <Gallery />
