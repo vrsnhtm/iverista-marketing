@@ -6,6 +6,7 @@ import { MenuSlideshow } from './components/MenuSlideshow'
 import { Promo } from './components/Promo'
 import { About } from './components/About'
 import { Gallery } from './components/Gallery'
+import { VideoReel } from './components/VideoReel'
 import { Testimonials } from './components/Testimonials'
 import { Feedback } from './components/Feedback'
 import { Visit } from './components/Visit'
@@ -32,6 +33,7 @@ export default function App() {
           <Promo />
           <About />
           <Gallery />
+          <VideoReel />
           <Testimonials />
           <Feedback />
           <Visit />
