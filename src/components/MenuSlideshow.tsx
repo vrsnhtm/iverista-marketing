@@ -26,13 +26,12 @@ export function MenuSlideshow() {
     setIndex((next + menuPosters.length) % menuPosters.length)
   }, [])
 
-  // Preload every poster so the first pass through never flashes empty.
+  // Preload only the next poster so the page load is not carrying all six.
   useEffect(() => {
-    for (const poster of menuPosters) {
-      const image = new Image()
-      image.src = poster.image
-    }
-  }, [])
+    const next = menuPosters[(index + 1) % menuPosters.length]
+    const image = new Image()
+    image.src = next.image
+  }, [index])
 
   useEffect(() => {
     const onVisibility = () => setPageHidden(document.hidden)

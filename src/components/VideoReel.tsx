@@ -8,20 +8,31 @@ export function VideoReel() {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const reduceMotion = useReducedMotion()
   const [failed, setFailed] = useState(false)
+  const [inView, setInView] = useState(false)
 
-  // Autoplay only for visitors who have not asked for reduced motion.
+  // Only fetch and play the clip once it is close to the viewport, so the clip is
+  // not part of the initial page load.
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-    if (reduceMotion) {
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: '250px 0px',
+    })
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    if (!inView || reduceMotion) {
       video.pause()
-      video.currentTime = 0
       return
     }
     video.play().catch(() => {
       /* Autoplay blocked — the controls are still there. */
     })
-  }, [reduceMotion])
+  }, [inView, reduceMotion])
 
   return (
     <section id="reel" aria-labelledby="reel-heading" className="bg-espresso py-24 text-cream sm:py-28 lg:py-32">
@@ -58,12 +69,11 @@ export function VideoReel() {
                   ref={videoRef}
                   src={VIDEO_SRC}
                   className="h-full w-full object-cover"
-                  autoPlay={!reduceMotion}
                   muted
                   loop
                   playsInline
                   controls
-                  preload="metadata"
+                  preload="none"
                   aria-label="Short video clip from iverista"
                   onError={() => setFailed(true)}
                 />

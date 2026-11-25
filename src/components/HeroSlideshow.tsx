@@ -36,13 +36,12 @@ export function HeroSlideshow() {
     setIndex((next + slides.length) % slides.length)
   }, [])
 
-  // Preload every slide so transitions never flash empty.
+  // Preload only the slide after this one — the rest would fight the first paint for bandwidth.
   useEffect(() => {
-    for (const slide of slides) {
-      const image = new Image()
-      image.src = slide.image
-    }
-  }, [])
+    const next = slides[(index + 1) % slides.length]
+    const image = new Image()
+    image.src = next.image
+  }, [index])
 
   useEffect(() => {
     const onVisibility = () => setPageHidden(document.hidden)
