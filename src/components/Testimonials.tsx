@@ -2,8 +2,19 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '../lib/utils'
 
+interface DrinkNote {
+  drink: string
+  /** Stars out of five, decimals allowed. */
+  rating: number
+  note: string
+}
+
 interface Testimonial {
-  quote: string
+  quote?: string
+  /** One review that covers several drinks, each scored on its own. */
+  items?: DrinkNote[]
+  /** Stars out of five for the whole review, decimals allowed. */
+  rating?: number
   name: string
   role: string
   /** Optional photo of the drink arriving, shown beside the quote. */
@@ -15,21 +26,63 @@ const testimonials: Testimonial[] = [
   {
     quote:
       'Honest review: yung matcha latte lasang ceremonial grade na matcha ginamit, sakto lang yung tamis, creaminess at matcha lang matitikman mo. 9.5/10. Yung spanish latte naman nag susuntukan sa pag balance yung espresso at cream, the best! 9.5/10.',
+    rating: 4.75,
     name: 'JB P.',
     role: 'Customer review',
     photo: '/images/review-jb-p.webp',
     photoAlt: 'JB P. smiling while holding up two iverista iced drinks in a takeaway bag',
   },
+  {
+    items: [
+      {
+        drink: 'Signature dark choco',
+        rating: 4,
+        note:
+          'As mahilig sa chocolate, nagustuhan ko yung timpla. Sakto yung blending ng tamis at pait. Sarap inumin habang nag-aaral.',
+      },
+      {
+        drink: 'Spanish latte (hot)',
+        rating: 5,
+        note: 'Masarap, tama lang daw yung timpla. Di masyadong matamis kaya nagustuhan ng lola ko.',
+      },
+    ],
+    name: 'M.N.G',
+    role: 'Customer review',
+  },
+  {
+    quote:
+      '9/10 for the Spanish latte. Gusto ko yung balance lang ang sweetness and tapang ng coffee. Ang cute din ng cup, pwede pang IG story HWHAHAHAHAHA. Thank you verr!! Will order again soon!',
+    rating: 4.5,
+    name: 'L.P',
+    role: 'Customer review',
+  },
+  {
+    quote:
+      'Sarap, lasang lasa yung damo hahaha solid, 10/10 bet na strong yung matcha flavor hindi lang lasang gatas, will recommend sa friends ko 🙌',
+    rating: 5,
+    name: 'M.J.P',
+    role: 'Customer review',
+  },
 ]
 
-function Stars() {
+function Stars({ rating = 5 }: { rating?: number }) {
   return (
-    <div className="flex gap-1" aria-label="5 out of 5 stars">
-      {Array.from({ length: 5 }).map((_, index) => (
-        <svg key={index} viewBox="0 0 20 20" aria-hidden="true" className="h-4 w-4 fill-caramel">
-          <path d="M10 1.8l2.5 5 5.5.8-4 3.9.95 5.5L10 14.4 5.05 17l.95-5.5-4-3.9 5.5-.8z" />
-        </svg>
-      ))}
+    <div className="flex gap-1" role="img" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, index) => {
+        const fill = Math.max(0, Math.min(1, rating - index))
+        return (
+          <span key={index} className="relative block h-4 w-4" aria-hidden="true">
+            <svg viewBox="0 0 20 20" className="absolute inset-0 h-4 w-4 fill-cream/20">
+              <path d="M10 1.8l2.5 5 5.5.8-4 3.9.95 5.5L10 14.4 5.05 17l.95-5.5-4-3.9 5.5-.8z" />
+            </svg>
+            <span className="absolute inset-y-0 left-0 block overflow-hidden" style={{ width: `${fill * 100}%` }}>
+              <svg viewBox="0 0 20 20" className="h-4 w-4 fill-caramel">
+                <path d="M10 1.8l2.5 5 5.5.8-4 3.9.95 5.5L10 14.4 5.05 17l.95-5.5-4-3.9 5.5-.8z" />
+              </svg>
+            </span>
+          </span>
+        )
+      })}
     </div>
   )
 }
@@ -84,7 +137,7 @@ export function Testimonials() {
           </div>
         </div>
 
-        <div className="mt-12 min-h-[19rem] sm:min-h-[16rem]" aria-live="polite">
+        <div className="mt-12 min-h-[22rem] sm:min-h-[19rem]" aria-live="polite">
           <AnimatePresence mode="wait" initial={false}>
             <motion.blockquote
               key={active.name}
@@ -95,10 +148,30 @@ export function Testimonials() {
               className="grid max-w-4xl gap-8 lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start lg:gap-12"
             >
               <div>
-                <Stars />
-                <p className="mt-6 font-display text-[clamp(1.45rem,3.2vw,2.15rem)] font-normal leading-snug text-cream/95">
-                  “{active.quote}”
-                </p>
+                {active.items ? (
+                  <ul className="space-y-6">
+                    {active.items.map((item) => (
+                      <li key={item.drink}>
+                        <div className="flex flex-wrap items-center gap-3">
+                          <Stars rating={item.rating} />
+                          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-caramel">
+                            {item.drink}
+                          </span>
+                        </div>
+                        <p className="mt-2.5 font-display text-[clamp(1.15rem,2.3vw,1.55rem)] font-normal leading-snug text-cream/95">
+                          “{item.note}”
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <>
+                    <Stars rating={active.rating} />
+                    <p className="mt-6 font-display text-[clamp(1.45rem,3.2vw,2.15rem)] font-normal leading-snug text-cream/95">
+                      “{active.quote}”
+                    </p>
+                  </>
+                )}
                 <footer className="mt-7 flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-full bg-caramel/20 font-display text-sm text-caramel">
                     {active.name.charAt(0)}
